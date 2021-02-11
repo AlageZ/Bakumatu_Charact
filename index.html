@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="main.css">
+    <title>幕末ァ</title>
+</head>
+<body>
+    <div id="box">
+        <label class="b">名前：<div class="tbd"><input type="text" id="player_name"></div></label><br>
+        <div id="bonuses">
+            <label class="b">幕末適正：<input type="number" min="1" max="12" value="1" style="width: 3em;" id="tekisei"></label>
+            <label><input type="checkbox" onchange="bonus_reload()">+天誅(<code id="tentyuu_bonus">0</code>)</label>
+            <label><input type="checkbox" onchange="bonus_reload()">+交戦(<code id="kousen_bonus">0</code>)</label>
+            <label ><input type="checkbox" onchange="bonus_reload()">+非戦闘(<code id="hisentou_bonus">0</code>)</label>
+            <label><input type="checkbox" onchange="bonus_reload()">+汎用(<code id="hanyou_bonus">0</code>)</label>
+            <label><input type="checkbox" onchange="bonus_reload()">+竹林(<code id="tikurin_bonus">0</code>)</label>
+            <label><input type="checkbox" onchange="bonus_reload()">+<input type="number" min="1" max="6" value="1" style="width: 3em;" id="dice_bonus"></label>
+        </div>
+        <span>=<code id="bonus_add">1</code></span>
+        <br><span class="b">行動力：<code id="stm">3</code></span>
+        <br><span class="b">体力：<input type="number" min="0" max="6" value="5" style="width: 3em;" id="now_hp">/<code id="max_hp">5</code></span>
+        <br><label class="b">キルカウント：<input type="number" max="10" id="killcount" style="width: 3em;" value="0"></label>
+        <br><span class="b">得点：<code id="points">11</code></span>
+        <br><span class="b">残り得点：<code id="nokori">11</code></span>
+        <div id="check_boxes">
+            <label title="交戦・天誅の射程＋１。幕府軍と同時に獲得できない。"><input type="checkbox" id="skill_0">維新軍<span class="need">1</span></label>
+            <label title="交戦・天誅の幕末適正＋２。維新軍と同時に獲得できない。"><input type="checkbox" id="skill_1">幕府軍<span class="need">1</span></label>
+            <label title="非戦闘ダメージ（交戦・天誅以外で受けるダメージ）ー２。"><input type="checkbox" id="skill_2">気配察知<span class="need">1</span></label>
+            <label title="交戦時、幕末適正＋１。（天誅する・される時はこの効果は発動しない）"><input type="checkbox" id="skill_3">戦闘適正・小<span class="need">1</span></label>
+            <label title="天誅時、幕末適正＋２。（天誅する・される時のみこの効果を発動する）"><input type="checkbox" id="skill_4">天誅適正・小<span class="need">1</span></label>
+            <label title="竹林に居る時、幕末適正＋６。"><input type="checkbox" id="skill_5">竹林適正<span class="need">2</span></label>
+            <label title="補正前の幕末適正が９以上の相手との戦闘時、幕末適正＋１ｄ６。"><input type="checkbox" id="skill_6">大物狩り<span class="need">2</span></label>
+            <label title="補正前の幕末適正が５以下の相手との戦闘時、幕末適正＋１ｄ６"><input type="checkbox" id="skill_7">小物狩り<span class="need">2</span></label>
+            <label title="常に幕末適正＋１。"><input type="checkbox" id="skill_8">汎用適応能力<span class="need">2</span></label>
+            <label title="最大体力＋１"><input type="checkbox" id="skill_9">タフネス<span class="need">2</span></label>
+            <label title="団子屋の串カードを使用できる。六文銭カードの射程＋１、ダメージ＋１。"><input type="checkbox" id="skill_10">手裏剣適正<span class="need">2</span></label>
+            <label title="花火カードの射程＋１、ダメージ＋２。"><input type="checkbox" id="skill_11">花火適正<span class="need">3</span></label>
+            <label title="ゲーム開始時・復活時、弓矢カードを１枚獲得する。"><input type="checkbox" id="skill_12">狙撃適正<span class="need">3</span></label>
+            <label title="質屋での回収時、追加で１枚の名刀カードを獲得する。"><input type="checkbox" id="skill_13">襲撃適正<span class="need">3</span></label>
+            <label title="自爆・切腹時、キルカウントを－１しない。"><input type="checkbox" id="skill_14">特攻上等<span class="need">3</span></label>
+            <label title="自身と同じマスに他に対象に取れるキャラクターがいる時、自身は対象に取られない。（両者扇動を持っていた場合、この効果は相殺する）"><input type="checkbox" id="skill_15">扇動者<span class="need">4</span></label>
+            <label title="移動時に最大３マスまで移動してもよい。"><input type="checkbox" id="skill_16">ランナー<span class="need">4</span></label>
+            <label title="自身の与えるあらゆるダメージ＋２。"><input type="checkbox" id="skill_17">攻撃適正<span class="need">4</span></label>
+            <label title="交戦時、幕末適正＋５。（天誅する・される時はこの効果は発動しない）"><input type="checkbox" id="skill_18">戦闘適正・大<span class="need">4</span></label>
+            <label title="天誅時、幕末適正＋８。（天誅する・される時のみこの効果を発動する）"><input type="checkbox" id="skill_19">天誅適正・大<span class="need">5</span></label>
+            <label title="自身の受けるダメージー２。この効果は常時発動し、自身による切腹も軽減する。"><input type="checkbox" id="skill_20">重装甲<span class="need">5</span></label>
+            <label title="毎手番得られる行動力＋１"><input type="checkbox" id="skill_21">並列思考<span class="need">6</span></label>
+            <label title="交戦時、幕末適正＋８。（天誅する・される時はこの効果は発動しない）"><input type="checkbox" id="skill_22">戦闘適正・超<span class="need">7</span></label>
+            <label title="交戦時、幕末適正＋１２。（天誅する・される時のみこの効果を発動する）"><input type="checkbox" id="skill_23">天誅適正・超<span class="need">8</span></label>
+            <label title="行動力－１。各手番１ｄ６を振り、偶数ならキルカウントを＋１する。"><input type="checkbox" id="skill_24">策謀者<span class="need">9</span></label>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
