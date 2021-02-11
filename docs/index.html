@@ -9,7 +9,7 @@
     <div id="box">
         <label class="b">名前：<div class="tbd"><input type="text" id="player_name"></div></label><br>
         <div id="bonuses">
-            <label class="b">幕末適正：<input type="number" min="2" max="12" value="1" style="width: 3em;" id="tekisei"></label>
+            <label class="b">幕末適正：<input type="number" min="2" max="12" value="2" style="width: 3em;" id="tekisei"></label>
             <label><input type="checkbox" onchange="bonus_reload()">+天誅(<code id="tentyuu_bonus">0</code>)</label>
             <label><input type="checkbox" onchange="bonus_reload()">+交戦(<code id="kousen_bonus">0</code>)</label>
             <label ><input type="checkbox" onchange="bonus_reload()">+非戦闘(<code id="hisentou_bonus">0</code>)</label>
@@ -17,12 +17,12 @@
             <label><input type="checkbox" onchange="bonus_reload()">+竹林(<code id="tikurin_bonus">0</code>)</label>
             <label><input type="checkbox" onchange="bonus_reload()">+<input type="number" min="1" max="6" value="1" style="width: 3em;" id="dice_bonus"></label>
         </div>
-        <span>=<code id="bonus_add">1</code></span>
+        <span>=<code id="bonus_add">2</code></span>
         <br><span class="b">行動力：<code id="stm">3</code></span>
         <br><span class="b">体力：<input type="number" min="0" max="6" value="5" style="width: 3em;" id="now_hp">/<code id="max_hp">5</code></span>
         <br><label class="b">キルカウント：<input type="number" max="10" id="killcount" style="width: 3em;" value="0"></label>
-        <br><span class="b">得点：<code id="points">11</code></span>
-        <br><span class="b">残り得点：<code id="nokori">11</code></span>
+        <br><span class="b">得点：<code id="points">10</code></span>
+        <br><span class="b">残り得点：<code id="nokori">10</code></span>
         <div id="check_boxes">
             <label title="交戦・天誅の射程＋１。幕府軍と同時に獲得できない。"><input type="checkbox" id="skill_0">維新軍<span class="need">1</span></label>
             <label title="交戦・天誅の幕末適正＋２。維新軍と同時に獲得できない。"><input type="checkbox" id="skill_1">幕府軍<span class="need">1</span></label>
