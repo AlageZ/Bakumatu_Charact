@@ -121,6 +121,12 @@ function bonus_reload(){
         dielist.forEach(v=>{
             v.disabled = true
         })
+    }else{
+        dielist.forEach(v=>{
+            if (Number(document.getElementById("points").innerText) - up - Number(v.nextElementSibling.innerText) < 0){
+                v.disabled = true
+            }
+        })
     }
     document.getElementById("nokori").innerText = Number(document.getElementById("points").innerText) - up
 
